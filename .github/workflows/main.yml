@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron:  '*/2 * * * *' # Run every 2 minutes
+    - cron: '0 0 * * *' # Run every day at midnight
 jobs:
   repo-sync:
     name: repo sync
