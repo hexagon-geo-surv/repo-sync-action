@@ -1,0 +1,738 @@
+on:
+  schedule:
+    - cron:  '*/2 * * * *' # Run every 2 minutes
+jobs:
+  repo-sync:
+    name: repo sync
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: bitbake
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/bitbake.git'
+          upstream: 'https://git.openembedded.org/bitbake'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: charls
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/charls.git'
+          upstream: 'https://github.com/team-charls/charls.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: eigen
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/eigen.git'
+          upstream: 'https://gitlab.com/libeigen/eigen.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: git-repo
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/git-repo.git'
+          upstream: 'https://gerrit.googlesource.com/git-repo.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: googletest
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/googletest.git'
+          upstream: 'https://github.com/google/googletest.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: libjpeg-turbo
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/libjpeg-turbo.git'
+          upstream: 'https://github.com/libjpeg-turbo/libjpeg-turbo.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: linux-stable
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/linux-stable.git'
+          upstream: 'https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: linux-stable-rt
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/linux-stable-rt.git'
+          upstream: 'https://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-stable-rt.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-freescale
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-freescale.git'
+          upstream: 'https://github.com/Freescale/meta-freescale.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-freescale-3rdparty
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-freescale-3rdparty.git'
+          upstream: 'https://github.com/Freescale/meta-freescale-3rdparty.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-freescale-distro
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-freescale-distro.git'
+          upstream: 'https://github.com/Freescale/meta-freescale-distro.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-intel
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-intel.git'
+          upstream: 'https://git.yoctoproject.org/git/meta-intel.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-intel-aero-base
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-intel-aero-base.git'
+          upstream: 'https://github.com/intel-aero/meta-intel-aero-base.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-openembedded
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-openembedded.git'
+          upstream: 'https://git.openembedded.org/meta-openembedded'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-raspberrypi
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-raspberrypi.git'
+          upstream: 'https://github.com/agherzan/meta-raspberrypi.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-swupdate
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-swupdate.git'
+          upstream: 'https://github.com/sbabic/meta-swupdate.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-variscite-imx
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-variscite-imx.git'
+          upstream: 'https://github.com/varigit/meta-variscite-imx.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: meta-virtualization
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/meta-virtualization.git'
+          upstream: 'https://git.yoctoproject.org/git/meta-virtualization.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: nlopt
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/nlopt.git'
+          upstream: 'https://github.com/stevengj/nlopt.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: OpenCL-ICD-Loader
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/OpenCL-ICD-Loader.git'
+          upstream: 'https://github.com/KhronosGroup/OpenCL-ICD-Loader.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: opencv
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/opencv.git'
+          upstream: 'https://github.com/opencv/opencv.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: opencv_contrib
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/opencv_contrib.git'
+          upstream: 'https://github.com/opencv/opencv_contrib.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: openembedded-core
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/openembedded-core.git'
+          upstream: 'https://git.openembedded.org/openembedded-core'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: openssl
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/openssl.git'
+          upstream: 'https://github.com/openssl/openssl.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: openexr
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/openexr.git'
+          upstream: 'https://github.com/AcademySoftwareFoundation/openexr.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: poky
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/poky.git'
+          upstream: 'https://git.yoctoproject.org/git/poky.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: pybind11
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/pybind11.git'
+          upstream: 'https://github.com/pybind/pybind11.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: tinyxml2
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/tinyxml2.git'
+          upstream: 'https://github.com/leethomason/tinyxml2.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qt3d
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qt3d.git'
+          upstream: 'https://github.com/qt/qt3d.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qt5
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qt5.git'
+          upstream: 'https://github.com/qt/qt5.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qt5compat
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qt5compat.git'
+          upstream: 'https://github.com/qt/qt5compat.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtactiveqt
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtactiveqt.git'
+          upstream: 'https://github.com/qt/qtactiveqt.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtandroidextras
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtandroidextras.git'
+          upstream: 'https://github.com/qt/qtandroidextras.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtbase
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtbase.git'
+          upstream: 'https://github.com/qt/qtbase.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtcanvas3d
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtcanvas3d.git'
+          upstream: 'https://github.com/qt/qtcanvas3d.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtconnectivity
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtconnectivity.git'
+          upstream: 'https://github.com/qt/qtconnectivity.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtcharts
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtcharts.git'
+          upstream: 'https://github.com/qt/qtcharts.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtdatavis3d
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtdatavis3d.git'
+          upstream: 'https://github.com/qt/qtdatavis3d.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtdeclarative
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtdeclarative.git'
+          upstream: 'https://github.com/qt/qtdeclarative.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtdeclarative-testsuites
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtdeclarative-testsuites.git'
+          upstream: 'https://github.com/qt/qtdeclarative-testsuites.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtdoc
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtdoc.git'
+          upstream: 'https://github.com/qt/qtdoc.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtdocgallery
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtdocgallery.git'
+          upstream: 'https://github.com/qt/qtdocgallery.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtfeedback
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtfeedback.git'
+          upstream: 'https://github.com/qt/qtfeedback.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtgamepad
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtgamepad.git'
+          upstream: 'https://github.com/qt/qtgamepad.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtgraphicaleffects
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtgraphicaleffects.git'
+          upstream: 'https://github.com/qt/qtgraphicaleffects.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtimageformats
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtimageformats.git'
+          upstream: 'https://github.com/qt/qtimageformats.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtlocation
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtlocation.git'
+          upstream: 'https://github.com/qt/qtlocation.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtlocation-mapboxgl
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtlocation-mapboxgl.git'
+          upstream: 'https://github.com/qt/qtlocation-mapboxgl.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtlottie
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtlottie.git'
+          upstream: 'https://github.com/qt/qtlottie.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtmacextras
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtmacextras.git'
+          upstream: 'https://github.com/qt/qtmacextras.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtmultimedia
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtmultimedia.git'
+          upstream: 'https://github.com/qt/qtmultimedia.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtnetworkauth
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtnetworkauth.git'
+          upstream: 'https://github.com/qt/qtnetworkauth.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtpim
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtpim.git'
+          upstream: 'https://github.com/qt/qtpim.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtpurchasing
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtpurchasing.git'
+          upstream: 'https://github.com/qt/qtpurchasing.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtrepotools
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtrepotools.git'
+          upstream: 'https://github.com/qt/qtrepotools.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtqa
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtqa.git'
+          upstream: 'https://github.com/qt/qtqa.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtquick3d
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtquick3d.git'
+          upstream: 'https://github.com/qt/qtquick3d.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtquickcontrols
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtquickcontrols.git'
+          upstream: 'https://github.com/qt/qtquickcontrols.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtquickcontrols2
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtquickcontrols2.git'
+          upstream: 'https://github.com/qt/qtquickcontrols2.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtquicktimeline
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtquicktimeline.git'
+          upstream: 'https://github.com/qt/qtquicktimeline.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtremoteobjects
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtremoteobjects.git'
+          upstream: 'https://github.com/qt/qtremoteobjects.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtscxml
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtscxml.git'
+          upstream: 'https://github.com/qt/qtscxml.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtscript
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtscript.git'
+          upstream: 'https://github.com/qt/qtscript.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtsensors
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtsensors.git'
+          upstream: 'https://github.com/qt/qtsensors.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtserialbus
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtserialbus.git'
+          upstream: 'https://github.com/qt/qtserialbus.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtserialport
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtserialport.git'
+          upstream: 'https://github.com/qt/qtserialport.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtshadertools
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtshadertools.git'
+          upstream: 'https://github.com/qt/qtshadertools.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtspeech
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtspeech.git'
+          upstream: 'https://github.com/qt/qtspeech.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtsvg
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtsvg.git'
+          upstream: 'https://github.com/qt/qtsvg.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtsystems
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtsystems.git'
+          upstream: 'https://github.com/qt/qtsystems.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qttools
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qttools.git'
+          upstream: 'https://github.com/qt/qttools.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qttranslations
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qttranslations.git'
+          upstream: 'https://github.com/qt/qttranslations.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtvirtualkeyboard
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtvirtualkeyboard.git'
+          upstream: 'https://github.com/qt/qtvirtualkeyboard.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtwayland
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtwayland.git'
+          upstream: 'https://github.com/qt/qtwayland.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtwebchannel
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtwebchannel.git'
+          upstream: 'https://github.com/qt/qtwebchannel.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtwebengine
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtwebengine.git'
+          upstream: 'https://github.com/qt/qtwebengine.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtwebengine-chromium
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtwebengine-chromium.git'
+          upstream: 'https://github.com/qt/qtwebengine-chromium.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtwebglplugin
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtwebglplugin.git'
+          upstream: 'https://github.com/qt/qtwebglplugin.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtwebsockets
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtwebsockets.git'
+          upstream: 'https://github.com/qt/qtwebsockets.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtwebview
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtwebview.git'
+          upstream: 'https://github.com/qt/qtwebview.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtwinextras
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtwinextras.git'
+          upstream: 'https://github.com/qt/qtwinextras.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtx11extras
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtx11extras.git'
+          upstream: 'https://github.com/qt/qtx11extras.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtxmlpatterns
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtxmlpatterns.git'
+          upstream: 'https://github.com/qt/qtxmlpatterns.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: qtxmlpatterns-testsuites
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/qtxmlpatterns-testsuites.git'
+          upstream: 'https://github.com/qt/qtxmlpatterns-testsuites.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: spdlog
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/spdlog.git'
+          upstream: 'https://github.com/gabime/spdlog.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: swupdate
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/swupdate.git'
+          upstream: 'https://github.com/sbabic/swupdate.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: thrift
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/thrift.git'
+          upstream: 'https://github.com/apache/thrift.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: u-boot
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/u-boot.git'
+          upstream: 'https://github.com/u-boot/u-boot.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: wcelibcex
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/wcelibcex.git'
+          upstream: 'https://github.com/krestenkrab/wcelibcex.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: wkhtmltopdf
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/wkhtmltopdf.git'
+          upstream: 'https://github.com/wkhtmltopdf/wkhtmltopdf.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}
+
+      - name: zlib
+        uses: ./
+        with:
+          origin: 'https://github.com/hexagon-geo-surv/zlib.git'
+          upstream: 'https://github.com/madler/zlib.git'
+          github-handle: ${{ secrets.REPO_SYNC_GITHUB_HANDLE }}
+          github-token: ${{ secrets.REPO_SYNC_GITHUB_TOKEN }}

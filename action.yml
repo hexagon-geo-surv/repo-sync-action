@@ -1,0 +1,24 @@
+name: 'Repo Sync'
+description: 'Keep mirrors and forks up-to-date'
+inputs:
+  origin:
+    description: 'Origin repository URL'
+    required: true
+  upstream:
+    description: 'Upstream repository URL'
+    required: true
+  github-handle:
+    description: 'GitHub user'
+    required: true
+  github-token:
+    description: 'GitHub personal access token'
+    required: true
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  env:
+    GITHUB_HANDLE: ${{ inputs.github-handle }}
+    GITHUB_TOKEN: ${{ inputs.github-token }}
+  args:
+    - ${{ inputs.origin }}
+    - ${{ inputs.upstream }}
