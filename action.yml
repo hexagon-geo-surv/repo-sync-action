@@ -7,18 +7,14 @@ inputs:
   upstream:
     description: 'Upstream repository URL'
     required: true
-  github-handle:
-    description: 'GitHub user'
-    required: true
-  github-token:
-    description: 'GitHub personal access token'
+  ssh-private-key:
+    description: 'SSH private key'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    GITHUB_HANDLE: ${{ inputs.github-handle }}
-    GITHUB_TOKEN: ${{ inputs.github-token }}
+    SSH_PRIVATE_KEY: ${{ inputs.ssh-private-key }}
   args:
     - ${{ inputs.origin }}
     - ${{ inputs.upstream }}
