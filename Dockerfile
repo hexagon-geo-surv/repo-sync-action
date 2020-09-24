@@ -3,14 +3,14 @@ FROM alpine
 RUN apk add --no-cache git openssh-client && \
   echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
-RUN mkdir ~/.ssh && \
-  chmod 700 ~/.ssh
+RUN mkdir /root/.ssh && \
+  chmod 700 /root/.ssh
 
-COPY id_rsa.pub ~/.ssh/id_rsa.pub
+COPY id_rsa.pub /root/.ssh/id_rsa.pub
 
-RUN touch ~/.ssh/id_rsa && \
-  chmod 600 ~/.ssh/id_rsa && \
-  chmod 644 ~/.ssh/id_rsa.pub
+RUN touch /root/.ssh/id_rsa && \
+  chmod 600 /root/.ssh/id_rsa && \
+  chmod 644 /root/.ssh/id_rsa.pub
 
 COPY repo-sync.sh /repo-sync.sh
 
