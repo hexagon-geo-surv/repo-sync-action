@@ -5,7 +5,8 @@ RUN apk add --no-cache git openssh-client && \
 
 COPY id_rsa.pub ~/.ssh/id_rsa.pub
 
-RUN chmod 600 ~/.ssh/id_rsa && \
+RUN touch ~/.ssh/id_rsa && \
+  chmod 600 ~/.ssh/id_rsa && \
   chmod 644 ~/.ssh/id_rsa.pub
 
 COPY repo-sync.sh /repo-sync.sh
