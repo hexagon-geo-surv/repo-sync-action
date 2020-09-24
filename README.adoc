@@ -1,3 +1,7 @@
 = Repo Sync
 
-Keep mirrors and forks up-to-date.
+Keep forks and mirrors up-to-date.
+
+The configuration of which forks/mirrors are synced is done in link:.github/workflows/main.yml[.github/workflows/main.yml].
+
+The deploy key which needs to be added the each fork/mirror can be found in link:.id_rsa.pub[id_rsa.pub].
