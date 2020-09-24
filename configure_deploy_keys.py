@@ -27,9 +27,9 @@ def main(user: str, token: str) -> None:
         set_secret(f'{repo_name.upper()}_SSH_PRIVATE_KEY', private_key, github_auth)
         set_secret(f'{repo_name.upper()}_SSH_PUBLIC_KEY', public_key, github_auth)
 
-        set_deploy_key(repo_name, "REPO_SYNC", public_key, github_auth)
+        set_deploy_key(repo_name, 'REPO_SYNC', public_key, github_auth)
 
-        print(f'Configured "{GITHUB_ORGANIZATION}/{repo_name}.git"')
+        print(f'Configured {GITHUB_ORGANIZATION}/{repo_name}.git')
 
     print('Done!')
 
@@ -79,7 +79,6 @@ def set_secret(secret_name: str, secret_value: str, github_auth: Tuple) -> None:
 
 def __encrypt_secret(public_key: str, secret_value: str) -> str:
     # https://developer.github.com/v3/actions/secrets/#example-encrypting-a-secret-using-python
-    """Encrypt a Unicode string using the public key."""
     public_key = public.PublicKey(public_key.encode('utf-8'), encoding.Base64Encoder())
     sealed_box = public.SealedBox(public_key)
     encrypted = sealed_box.encrypt(secret_value.encode('utf-8'))
@@ -87,17 +86,36 @@ def __encrypt_secret(public_key: str, secret_value: str) -> str:
 
 
 def set_deploy_key(repo_name: str, deploy_key_name: str, deploy_key_value: str, github_auth: Tuple) -> None:
-    # https://developer.github.com/v3/repos/keys/#delete-a-deploy-key
-    # DELETE /repos/:owner/:repo/keys/:key_id
-    # TODO
+    # https://developer.github.com/v3/repos/keys/#list-deploy-keys
+    response = requests.get(f'{GITHUB_API_URL}/repos/{GITHUB_ORGANIZATION}/{repo_name}/keys', auth=github_auth)
+
+    if response.status_code != codes.ok:
+        raise Exception(response.content)
+
+    keys = json.loads(response.content)
+    repo_sync_key_id = next(iter([key['id'] for key in keys if key['title'] == 'REPO_SYNC']), None)
+
+    if repo_sync_key_id is not None:
+        # https://developer.github.com/v3/repos/keys/#delete-a-deploy-key
+        response = requests.delete(
+            f'{GITHUB_API_URL}/repos/{GITHUB_ORGANIZATION}/{repo_name}/keys/{repo_sync_key_id}', auth=github_auth)
+
+        if response.status_code != codes.not_found and response.status_code != codes.no_content:
+            raise Exception(response.content)
 
     # https://developer.github.com/v3/repos/keys/#create-a-deploy-key
     # POST /repos/:owner/:repo/keys
-    # title
-    # key
-    # read_only
-    # TODO
-    pass
+    response = requests.post(f'{GITHUB_API_URL}/repos/{GITHUB_ORGANIZATION}/{repo_name}/keys',
+                             auth=github_auth,
+                             headers=JSON_HEADERS,
+                             json={
+                                 'title': deploy_key_name,
+                                 'key': deploy_key_value,
+                                 'read_only': False
+                             })
+
+    if response.status_code != codes.created:
+        raise Exception(response.content)
 
 
 if __name__ == '__main__':
