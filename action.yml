@@ -1,5 +1,5 @@
 name: 'Repo Sync'
-description: 'Keep mirrors and forks up-to-date'
+description: 'Keep forks and mirros up-to-date'
 inputs:
   origin:
     description: 'Origin repository URL'
