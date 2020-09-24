@@ -3,6 +3,8 @@ FROM alpine
 RUN apk add --no-cache git openssh-client && \
   echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
+RUN mkdir ~/.shh
+
 COPY id_rsa.pub ~/.ssh/id_rsa.pub
 
 RUN touch ~/.ssh/id_rsa && \
