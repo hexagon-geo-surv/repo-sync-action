@@ -3,11 +3,14 @@ ORIGIN=$1
 UPSTREAM=$2
 REPO_DIR=repo
 
-echo "Setup ..."
+echo "Setup directory..."
 mkdir $REPO_DIR
 
+echo "Setup SSH ..."
+echo $SSH_PRIVATE_KEY > ~/.ssh/id_rsa
+
 echo "Clone origin $ORIGIN ..."
-git clone $(echo $ORIGIN | sed "s/github.com/${GITHUB_HANDLE}:${GITHUB_TOKEN}@github.com/") repo
+git clone $ORIGIN repo
 
 cd $REPO_DIR
 
