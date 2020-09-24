@@ -1,6 +1,6 @@
 on:
   schedule:
-    - cron: '0 0 * * *' # Run every 2 minutes for testing
+    - cron: '*/5 * * * *' # Run every 5 minutes for testing
 jobs:
   repo-sync:
     name: repo sync
