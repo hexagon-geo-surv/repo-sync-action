@@ -3,7 +3,7 @@ FROM alpine
 RUN apk add --no-cache git openssh-client && \
   echo "StrictHostKeyChecking no" >> /etc/ssh/ssh_config
 
-RUN mkdir ~/.shh && \
+RUN mkdir ~/.ssh && \
   chmod 700 ~/.ssh
 
 COPY id_rsa.pub ~/.ssh/id_rsa.pub
