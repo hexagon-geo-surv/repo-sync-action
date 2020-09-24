@@ -9,6 +9,9 @@ mkdir $REPO_DIR
 echo "Setup SSH ..."
 echo $SSH_PRIVATE_KEY > /root/.ssh/id_rsa
 
+echo "DEBUG"
+cat /root/.ssh/id_rsa
+
 echo "Clone origin $ORIGIN ..."
 git clone $ORIGIN repo
 
