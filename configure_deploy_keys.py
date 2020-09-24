@@ -1,11 +1,3 @@
-# TODO:
-# 1) Implement click skeleton
-# 2) Options: -t/--token, -u/--user
-# 3) Read all origin URLs from .github/workflows/main.yml
-# 4) Foreach URL:
-# 4a) Generate ssh key pair
-# 4b) Refresh #REPO#_SSH_PRIVATE_KEY in secrets of repo-sync.git
-# 4c) Refresh REPO_SYNC deploy key in fork/mirror.git
 from typing import Tuple
 
 import click
@@ -53,12 +45,17 @@ def __generate_ssh_key_pair() -> Tuple:
 
 
 def set_secret(secret_name: str, secret_value: str, github_user: str, github_token: str) -> None:
+    # https://developer.github.com/v3/actions/secrets/#create-or-update-a-repository-secret
     # TODO
     pass
 
 
 def set_deploy_key(repo_name: str, deploy_key_name: str, deploy_key_value: str, github_user: str,
                    github_token: str) -> None:
+    # https://developer.github.com/v3/repos/keys/#delete-a-deploy-key
+    # TODO
+
+    # https://developer.github.com/v3/repos/keys/#create-a-deploy-key
     # TODO
     pass
 
