@@ -598,123 +598,141 @@ jobs:
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtwayland.git'
           upstream: 'git@github.com:qt/qtwayland.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTWAYLAND_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTWAYLAND_SSH_PUBLIC_KEY }}
 
       - name: qtwebchannel
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtwebchannel.git'
           upstream: 'git@github.com:qt/qtwebchannel.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTWEBCHANNEL_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTWEBCHANNEL_SSH_PUBLIC_KEY }}
 
       - name: qtwebengine
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtwebengine.git'
           upstream: 'git@github.com:qt/qtwebengine.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTWEBENGINE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTWEBENGINE_SSH_PUBLIC_KEY }}
 
       - name: qtwebengine-chromium
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtwebengine-chromium.git'
           upstream: 'git@github.com:qt/qtwebengine-chromium.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTWEBENGINE_CHROMIUM_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTWEBENGINE_CHROMIUM_SSH_PUBLIC_KEY }}
 
       - name: qtwebglplugin
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtwebglplugin.git'
           upstream: 'git@github.com:qt/qtwebglplugin.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTWEBGLPLUGIN_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTWEBGLPLUGIN_SSH_PUBLIC_KEY }}
 
       - name: qtwebsockets
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtwebsockets.git'
           upstream: 'git@github.com:qt/qtwebsockets.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTWEBSOCKETS_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTWEBSOCKETS_SSH_PUBLIC_KEY }}
 
       - name: qtwebview
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtwebview.git'
           upstream: 'git@github.com:qt/qtwebview.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTWEBVIEW_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTWEBVIEW_SSH_PUBLIC_KEY }}
 
       - name: qtwinextras
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtwinextras.git'
           upstream: 'git@github.com:qt/qtwinextras.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTWINEXTRAS_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTWINEXTRAS_SSH_PUBLIC_KEY }}
 
       - name: qtx11extras
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtx11extras.git'
           upstream: 'git@github.com:qt/qtx11extras.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTX11EXTRAS_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTX11EXTRAS_SSH_PUBLIC_KEY }}
 
       - name: qtxmlpatterns
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtxmlpatterns.git'
           upstream: 'git@github.com:qt/qtxmlpatterns.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTXMLPATTERNS_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTXMLPATTERNS_SSH_PUBLIC_KEY }}
 
       - name: qtxmlpatterns-testsuites
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtxmlpatterns-testsuites.git'
           upstream: 'git@github.com:qt/qtxmlpatterns-testsuites.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTXMLPATTERNS_TESTSUITES_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTXMLPATTERNS_TESTSUITES_SSH_PUBLIC_KEY }}
 
       - name: spdlog
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/spdlog.git'
           upstream: 'git@github.com:gabime/spdlog.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.SPDLOG_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.SPDLOG_SSH_PUBLIC_KEY }}
 
       - name: swupdate
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/swupdate.git'
           upstream: 'git@github.com:sbabic/swupdate.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.SWUPDATE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.SWUPDATE_SSH_PUBLIC_KEY }}
 
       - name: thrift
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/thrift.git'
           upstream: 'git@github.com:apache/thrift.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.THRIFT_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.THRIFT_SSH_PUBLIC_KEY }}
 
       - name: u-boot
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/u-boot.git'
           upstream: 'git@github.com:u-boot/u-boot.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.U_BOOT_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.U_BOOT_SSH_PUBLIC_KEY }}
 
       - name: wcelibcex
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/wcelibcex.git'
           upstream: 'git@github.com:krestenkrab/wcelibcex.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.WCELIBCEX_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.WCELIBCEX_SSH_PUBLIC_KEY }}
 
       - name: wkhtmltopdf
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/wkhtmltopdf.git'
           upstream: 'git@github.com:wkhtmltopdf/wkhtmltopdf.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.WKHTMLTOPDF_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.WKHTMLTOPDF_SSH_PUBLIC_KEY }}
 
       - name: zlib
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/zlib.git'
           upstream: 'git@github.com:madler/zlib.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.ZLIB_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.ZLIB_SSH_PUBLIC_KEY }}
