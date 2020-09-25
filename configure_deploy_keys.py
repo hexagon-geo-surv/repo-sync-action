@@ -4,6 +4,7 @@ from typing import Tuple
 
 import click
 import requests
+import yaml
 from cryptography.hazmat.backends import default_backend
 from cryptography.hazmat.primitives import serialization
 from cryptography.hazmat.primitives.asymmetric import rsa
@@ -22,21 +23,25 @@ def main(user: str, token: str) -> None:
     github_auth = user, token
 
     for repo_name in get_repo_names():
+        print(f'Configuring {GITHUB_ORGANIZATION}/{repo_name}.git ... ', end='')
+
         private_key, public_key = __generate_ssh_key_pair()
 
-        set_secret(f'{repo_name.upper()}_SSH_PRIVATE_KEY', private_key, github_auth)
-        set_secret(f'{repo_name.upper()}_SSH_PUBLIC_KEY', public_key, github_auth)
+        secret_name_prefix = repo_name.upper().replace('-', '_')
+        set_secret(f'{secret_name_prefix}_SSH_PRIVATE_KEY', private_key, github_auth)
+        set_secret(f'{secret_name_prefix}_SSH_PUBLIC_KEY', public_key, github_auth)
 
         set_deploy_key(repo_name, 'REPO_SYNC', public_key, github_auth)
 
-        print(f'Configured {GITHUB_ORGANIZATION}/{repo_name}.git')
+        print(f'done!')
 
-    print('Done!')
+    print('Finished!')
 
 
 def get_repo_names() -> [str]:
-    # TODO: Read repo names from .github/workflows/main.yml
-    return ['bitbake']
+    with open('.github/workflows/main.yml') as file:
+        data = yaml.load(file, Loader=yaml.FullLoader)
+        return [step['name'] for step in data['jobs']['repo-sync']['steps'] if 'name' in step]
 
 
 def __generate_ssh_key_pair() -> Tuple:
