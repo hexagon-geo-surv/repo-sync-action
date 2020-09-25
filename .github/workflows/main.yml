@@ -86,16 +86,16 @@ jobs:
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-freescale-3rdparty.git'
           upstream: 'git@github.com:Freescale/meta-freescale-3rdparty.git'
-          ssh-private-key: ${{ secrets.META_FREESCALE-3RDPARTY_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.META_FREESCALE-3RDPARTY_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.META_FREESCALE_3RDPARTY_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_FREESCALE_3RDPARTY_SSH_PUBLIC_KEY }}
 
       - name: meta-freescale-distro
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-freescale-distro.git'
           upstream: 'git@github.com:Freescale/meta-freescale-distro.git'
-          ssh-private-key: ${{ secrets.META_FREESCALE-DISTRO_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.META_FREESCALE-DISTRO_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.META_FREESCALE_DISTRO_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_FREESCALE_DISTRO_SSH_PUBLIC_KEY }}
 
       - name: meta-intel
         uses: ./
@@ -414,7 +414,8 @@ jobs:
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtmultimedia.git'
           upstream: 'git@github.com:qt/qtmultimedia.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTMULTIMEDIA_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTMULTIMEDIA_SSH_PUBLIC_KEY }}
 
       - name: qtnetworkauth
         uses: ./
