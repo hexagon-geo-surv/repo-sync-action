@@ -254,8 +254,8 @@ jobs:
         with:
           origin: 'git@github.com:hexagon-geo-surv/qt5compat.git'
           upstream: 'git@github.com:qt/qt5compat.git'
-          ssh-private-key: ${{ secrets.QT5COMPACT_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.QT5COMPACT_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.QT5COMPAT_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QT5COMPAT_SSH_PUBLIC_KEY }}
 
       - name: qtactiveqt
         uses: ./
