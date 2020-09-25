@@ -126,252 +126,288 @@ jobs:
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-raspberrypi.git'
           upstream: 'git@github.com:agherzan/meta-raspberrypi.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.META_RASPBERRYPI_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_RASPBERRYPI_SSH_PUBLIC_KEY }}
 
       - name: meta-swupdate
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-swupdate.git'
           upstream: 'git@github.com:sbabic/meta-swupdate.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.META_SWUPDATE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_SWUPDATE_SSH_PUBLIC_KEY }}
 
       - name: meta-variscite-imx
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-variscite-imx.git'
           upstream: 'git@github.com:varigit/meta-variscite-imx.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.META_VARISCITE_IMX_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_VARISCITE_IMX_SSH_PUBLIC_KEY }}
 
       - name: meta-virtualization
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-virtualization.git'
           upstream: 'git://git.yoctoproject.org/meta-virtualization'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.META_VIRTUALIZATION_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_VIRTUALIZATION_SSH_PUBLIC_KEY }}
 
       - name: nlopt
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/nlopt.git'
           upstream: 'git@github.com:stevengj/nlopt.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.NLOPT_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.NLOPT_SSH_PUBLIC_KEY }}
 
       - name: OpenCL-ICD-Loader
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/OpenCL-ICD-Loader.git'
           upstream: 'git@github.com:KhronosGroup/OpenCL-ICD-Loader.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.OPENCL_ICD_LOADER_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.OPENCL_ICD_LOADER_SSH_PUBLIC_KEY }}
 
       - name: opencv
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/opencv.git'
           upstream: 'git@github.com:opencv/opencv.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.OPENCV_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.OPENCV_SSH_PUBLIC_KEY }}
 
       - name: opencv_contrib
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/opencv_contrib.git'
           upstream: 'git@github.com:opencv/opencv_contrib.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.OPENCV_CONTRIB_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.OPENCV_CONTRIB_SSH_PUBLIC_KEY }}
 
       - name: openembedded-core
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/openembedded-core.git'
           upstream: 'git://git.openembedded.org/openembedded-core'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.OPENEMBEDDED_CORE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.OPENEMBEDDED_CORE_SSH_PUBLIC_KEY }}
 
       - name: openssl
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/openssl.git'
           upstream: 'git@github.com:openssl/openssl.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.OPENSSL_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.OPENSSL_SSH_PUBLIC_KEY }}
 
       - name: openexr
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/openexr.git'
           upstream: 'git@github.com:AcademySoftwareFoundation/openexr.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.OPENEXR_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.OPENEXR_SSH_PUBLIC_KEY }}
 
       - name: poky
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/poky.git'
           upstream: 'git://git.yoctoproject.org/poky'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.POKY_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.POKY_SSH_PUBLIC_KEY }}
 
       - name: pybind11
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/pybind11.git'
           upstream: 'git@github.com:pybind/pybind11.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.PYBIND11_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.PYBIND11_SSH_PUBLIC_KEY }}
 
       - name: tinyxml2
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/tinyxml2.git'
           upstream: 'git@github.com:leethomason/tinyxml2.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.TINYXML2_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.TINYXML2_SSH_PUBLIC_KEY }}
 
       - name: qt3d
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qt3d.git'
           upstream: 'git@github.com:qt/qt3d.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QT3D_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QT3D_SSH_PUBLIC_KEY }}
 
       - name: qt5
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qt5.git'
           upstream: 'git@github.com:qt/qt5.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QT5_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QT5_SSH_PUBLIC_KEY }}
 
       - name: qt5compat
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qt5compat.git'
           upstream: 'git@github.com:qt/qt5compat.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTCOMPACT_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTCOMPACT_SSH_PUBLIC_KEY }}
 
       - name: qtactiveqt
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtactiveqt.git'
           upstream: 'git@github.com:qt/qtactiveqt.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTACTIVEQT_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTACTIVEQT_SSH_PUBLIC_KEY }}
 
       - name: qtandroidextras
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtandroidextras.git'
           upstream: 'git@github.com:qt/qtandroidextras.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTANDROIDEXTRAS_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTANDROIDEXTRAS_SSH_PUBLIC_KEY }}
 
       - name: qtbase
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtbase.git'
           upstream: 'git@github.com:qt/qtbase.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTBASE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTBASE_SSH_PUBLIC_KEY }}
 
       - name: qtcanvas3d
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtcanvas3d.git'
           upstream: 'git@github.com:qt/qtcanvas3d.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTCANVAS3D_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTCANVAS3D_SSH_PUBLIC_KEY }}
 
       - name: qtconnectivity
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtconnectivity.git'
           upstream: 'git@github.com:qt/qtconnectivity.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTCONNECTIVITY_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTCONNECTIVITY_SSH_PUBLIC_KEY }}
 
       - name: qtcharts
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtcharts.git'
           upstream: 'git@github.com:qt/qtcharts.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTCHARTS_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTCHARTS_SSH_PUBLIC_KEY }}
 
       - name: qtdatavis3d
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtdatavis3d.git'
           upstream: 'git@github.com:qt/qtdatavis3d.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTDATAVIS3D_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTDATAVIS3D_SSH_PUBLIC_KEY }}
 
       - name: qtdeclarative
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtdeclarative.git'
           upstream: 'git@github.com:qt/qtdeclarative.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTDECLARATIVE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTDECLARATIVE_SSH_PUBLIC_KEY }}
 
       - name: qtdeclarative-testsuites
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtdeclarative-testsuites.git'
           upstream: 'git@github.com:qt/qtdeclarative-testsuites.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTDECLARATIVE_TESTSUITES_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTDECLARATIVE_TESTSUITES_SSH_PUBLIC_KEY }}
 
       - name: qtdoc
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtdoc.git'
           upstream: 'git@github.com:qt/qtdoc.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTDOC_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTDOC_SSH_PUBLIC_KEY }}
 
       - name: qtdocgallery
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtdocgallery.git'
           upstream: 'git@github.com:qt/qtdocgallery.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTDOCGALLERY_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTDOCGALLERY_SSH_PUBLIC_KEY }}
 
       - name: qtfeedback
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtfeedback.git'
           upstream: 'git@github.com:qt/qtfeedback.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTFEEDBACK_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTFEEDBACK_SSH_PUBLIC_KEY }}
 
       - name: qtgamepad
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtgamepad.git'
           upstream: 'git@github.com:qt/qtgamepad.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTGAMEPAD_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTGAMEPAD_SSH_PUBLIC_KEY }}
 
       - name: qtgraphicaleffects
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtgraphicaleffects.git'
           upstream: 'git@github.com:qt/qtgraphicaleffects.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTGRAPHICALEFFECTS_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTGRAPHICALEFFECTS_SSH_PUBLIC_KEY }}
 
       - name: qtimageformats
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtimageformats.git'
           upstream: 'git@github.com:qt/qtimageformats.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTIMAGEFORMATS_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTIMAGEFORMATS_SSH_PUBLIC_KEY }}
 
       - name: qtlocation
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtlocation.git'
           upstream: 'git@github.com:qt/qtlocation.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTLOCATION_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTLOCATION_SSH_PUBLIC_KEY }}
 
       - name: qtlocation-mapboxgl
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtlocation-mapboxgl.git'
           upstream: 'git@github.com:qt/qtlocation-mapboxgl.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTLOCATION_MAPBOXGL_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTLOCATION_MAPBOXGL_SSH_PUBLIC_KEY }}
 
       - name: qtlottie
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtlottie.git'
           upstream: 'git@github.com:qt/qtlottie.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTLOTTIE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTLOTTIE_SSH_PUBLIC_KEY }}
 
       - name: qtmacextras
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/qtmacextras.git'
           upstream: 'git@github.com:qt/qtmacextras.git'
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+          ssh-private-key: ${{ secrets.QTMACEXTRAS_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.QTMACEXTRAS_SSH_PUBLIC_KEY }}
 
       - name: qtmultimedia
         uses: ./
