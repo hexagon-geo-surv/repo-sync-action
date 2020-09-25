@@ -38,8 +38,8 @@ jobs:
         with:
           origin: 'git@github.com:hexagon-geo-surv/git-repo.git'
           upstream: 'https://gerrit.googlesource.com/git-repo.git'
-          ssh-private-key: ${{ secrets.GIT-REPO_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.GIT-REPO_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.GIT_REPO_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.GIT_REPO_SSH_PUBLIC_KEY }}
 
       - name: googletest
         uses: ./
@@ -54,72 +54,72 @@ jobs:
         with:
           origin: 'git@github.com:hexagon-geo-surv/libjpeg-turbo.git'
           upstream: 'git@github.com:libjpeg-turbo/libjpeg-turbo.git'
-          ssh-private-key: ${{ secrets.LIBJPEG-TURBO_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.LIBJPEG-TURBO_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.LIBJPEG_TURBO_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.LIBJPEG_TURBO_SSH_PUBLIC_KEY }}
 
       - name: linux-stable
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/linux-stable.git'
           upstream: 'git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux.git'
-          ssh-private-key: ${{ secrets.LINUX-STABLE_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.LINUX-STABLE_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.LINUX_STABLE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.LINUX_STABLE_SSH_PUBLIC_KEY }}
 
       - name: linux-stable-rt
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/linux-stable-rt.git'
           upstream: 'git://git.kernel.org/pub/scm/linux/kernel/git/rt/linux-stable-rt.git'
-          ssh-private-key: ${{ secrets.LINUX-STABLE-RT_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.LINUX-STABLE-RT_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.LINUX_STABLE_RT_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.LINUX_STABLE_RT_SSH_PUBLIC_KEY }}
 
       - name: meta-freescale
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-freescale.git'
           upstream: 'git@github.com:Freescale/meta-freescale.git'
-          ssh-private-key: ${{ secrets.META-FREESCALE_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.META-FREESCALE_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.META_FREESCALE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_FREESCALE_SSH_PUBLIC_KEY }}
 
       - name: meta-freescale-3rdparty
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-freescale-3rdparty.git'
           upstream: 'git@github.com:Freescale/meta-freescale-3rdparty.git'
-          ssh-private-key: ${{ secrets.META-FREESCALE-3RDPARTY_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.META-FREESCALE-3RDPARTY_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.META_FREESCALE-3RDPARTY_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_FREESCALE-3RDPARTY_SSH_PUBLIC_KEY }}
 
       - name: meta-freescale-distro
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-freescale-distro.git'
           upstream: 'git@github.com:Freescale/meta-freescale-distro.git'
-          ssh-private-key: ${{ secrets.META-FREESCALE-DISTRO_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.META-FREESCALE-DISTRO_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.META_FREESCALE-DISTRO_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_FREESCALE-DISTRO_SSH_PUBLIC_KEY }}
 
       - name: meta-intel
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-intel.git'
           upstream: 'git://git.yoctoproject.org/meta-intel'
-          ssh-private-key: ${{ secrets.META-INTEL_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.META-INTEL_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.META_INTEL_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_INTEL_SSH_PUBLIC_KEY }}
 
       - name: meta-intel-aero-base
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-intel-aero-base.git'
           upstream: 'git@github.com:intel-aero/meta-intel-aero-base.git'
-          ssh-private-key: ${{ secrets.META-INTEL-AERO-BASE_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.META-INTEL-AERO-BASE_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.META_INTEL_AERO_BASE_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_INTEL_AERO_BASE_SSH_PUBLIC_KEY }}
 
       - name: meta-openembedded
         uses: ./
         with:
           origin: 'git@github.com:hexagon-geo-surv/meta-openembedded.git'
           upstream: 'git://git.openembedded.org/meta-openembedded'
-          ssh-private-key: ${{ secrets.META-OPENEMBEDDED_SSH_PRIVATE_KEY }}
-          ssh-public-key: ${{ secrets.META-OPENEMBEDDED_SSH_PUBLIC_KEY }}
+          ssh-private-key: ${{ secrets.META_OPENEMBEDDED_SSH_PRIVATE_KEY }}
+          ssh-public-key: ${{ secrets.META_OPENEMBEDDED_SSH_PUBLIC_KEY }}
 
       - name: meta-raspberrypi
         uses: ./
