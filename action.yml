@@ -10,11 +10,15 @@ inputs:
   ssh-private-key:
     description: 'SSH private key'
     required: true
+  ssh-public-key:
+    description: 'SSH public key'
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
     SSH_PRIVATE_KEY: ${{ inputs.ssh-private-key }}
+    SSH_PUBLIC_KEY: ${{ inputs.ssh-public-key }}
   args:
     - ${{ inputs.origin }}
     - ${{ inputs.upstream }}
