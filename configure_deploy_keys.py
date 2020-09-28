@@ -1,3 +1,4 @@
+import base64
 import json
 from base64 import b64encode
 from typing import Tuple
@@ -17,19 +18,20 @@ JSON_HEADERS = {'Content-Type': 'application/json'}
 
 
 @click.command()
+@click.option('-r', '--repo', required=True, help='Name of the workflow repo storing the secrets')
 @click.option('-u', '--user', required=True, envvar='GITHUB_USER', help='GitHub.com - User')
 @click.option('-t', '--token', required=True, envvar='GITHUB_TOKEN', help='GitHub.com - Personal Access Token')
-def main(user: str, token: str) -> None:
+def main(repo: str, user: str, token: str) -> None:
     github_auth = user, token
 
-    for repo_name in get_repo_names():
+    for repo_name in get_repo_names(repo, github_auth):
         print(f'Configuring {GITHUB_ORGANIZATION}/{repo_name}.git ... ', end='')
 
         private_key, public_key = __generate_ssh_key_pair()
 
         secret_name_prefix = repo_name.upper().replace('-', '_')
-        set_secret(f'{secret_name_prefix}_SSH_PRIVATE_KEY', private_key, github_auth)
-        set_secret(f'{secret_name_prefix}_SSH_PUBLIC_KEY', public_key, github_auth)
+        set_secret(repo, f'{secret_name_prefix}_SSH_PRIVATE_KEY', private_key, github_auth)
+        set_secret(repo, f'{secret_name_prefix}_SSH_PUBLIC_KEY', public_key, github_auth)
 
         set_deploy_key(repo_name, 'REPO_SYNC', public_key, github_auth)
 
@@ -38,10 +40,18 @@ def main(user: str, token: str) -> None:
     print('Finished!')
 
 
-def get_repo_names() -> [str]:
-    with open('.github/workflows/main.yml') as file:
-        data = yaml.load(file, Loader=yaml.FullLoader)
-        return [step['name'] for step in data['jobs']['repo-sync']['steps'] if 'name' in step]
+def get_repo_names(repo: str, github_auth: Tuple) -> [str]:
+    response = requests.get(f'{GITHUB_API_URL}/repos/{GITHUB_ORGANIZATION}/{repo}/contents/.github/workflows/main.yml',
+                            auth=github_auth)
+
+    if response.status_code != codes.ok:
+        raise Exception(response.content)
+
+    response = json.loads(response.content)
+    workflow_file_content = base64.b64decode(response['content'])
+
+    workflow_file = yaml.load(workflow_file_content, Loader=yaml.FullLoader)
+    return [step['name'] for step in workflow_file['jobs']['repo-sync']['steps'] if 'name' in step]
 
 
 def __generate_ssh_key_pair() -> Tuple:
@@ -57,9 +67,9 @@ def __generate_ssh_key_pair() -> Tuple:
     return private_key.decode('utf-8'), public_key.decode('utf-8')
 
 
-def set_secret(secret_name: str, secret_value: str, github_auth: Tuple) -> None:
+def set_secret(repo: str, secret_name: str, secret_value: str, github_auth: Tuple) -> None:
     # https://developer.github.com/v3/actions/secrets/#get-a-repository-public-key
-    response = requests.get(f'{GITHUB_API_URL}/repos/{GITHUB_ORGANIZATION}/repo-sync/actions/secrets/public-key',
+    response = requests.get(f'{GITHUB_API_URL}/repos/{GITHUB_ORGANIZATION}/{repo}/actions/secrets/public-key',
                             auth=github_auth)
 
     if response.status_code != codes.ok:
@@ -70,7 +80,7 @@ def set_secret(secret_name: str, secret_value: str, github_auth: Tuple) -> None:
     key_id = response['key_id']
 
     # https://developer.github.com/v3/actions/secrets/#create-or-update-a-repository-secret
-    response = requests.put(f'{GITHUB_API_URL}/repos/{GITHUB_ORGANIZATION}/repo-sync/actions/secrets/{secret_name}',
+    response = requests.put(f'{GITHUB_API_URL}/repos/{GITHUB_ORGANIZATION}/{repo}/actions/secrets/{secret_name}',
                             auth=github_auth,
                             headers=JSON_HEADERS,
                             json={
