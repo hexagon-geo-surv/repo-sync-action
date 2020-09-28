@@ -1,5 +1,5 @@
 name: 'Repo Sync'
-description: 'Keep mirrors and forks up-to-date'
+description: 'Keep forks and mirros up-to-date'
 inputs:
   origin:
     description: 'Origin repository URL'
@@ -7,18 +7,18 @@ inputs:
   upstream:
     description: 'Upstream repository URL'
     required: true
-  github-handle:
-    description: 'GitHub user'
+  ssh-private-key:
+    description: 'SSH private key'
     required: true
-  github-token:
-    description: 'GitHub personal access token'
+  ssh-public-key:
+    description: 'SSH public key'
     required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
   env:
-    GITHUB_HANDLE: ${{ inputs.github-handle }}
-    GITHUB_TOKEN: ${{ inputs.github-token }}
+    SSH_PRIVATE_KEY: ${{ inputs.ssh-private-key }}
+    SSH_PUBLIC_KEY: ${{ inputs.ssh-public-key }}
   args:
     - ${{ inputs.origin }}
     - ${{ inputs.upstream }}
