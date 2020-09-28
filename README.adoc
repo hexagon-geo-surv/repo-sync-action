@@ -1,8 +1,13 @@
 = Repo Sync
 
-Keep forks and mirrors up-to-date.
+GitHub action to keep forks and mirrors up-to-date.
 
-The configuration of which forks/mirrors are synced is done in link:.github/workflows/main.yml[.github/workflows/main.yml].
+The configuration of which forks/mirrors are synced is done in
+
+- link:https://github.com/hexagon-geo-surv/repo-sync-workflow-1/blob/master/.github/workflows/main.yml[repo-sync-workflow-1]
+- link:https://github.com/hexagon-geo-surv/repo-sync-workflow-2/blob/master/.github/workflows/main.yml[repo-sync-workflow-2]
+
+_NOTE:_ There is a link:https://docs.github.com/en/free-pro-team@latest/actions/reference/encrypted-secrets#limits-for-secrets[limit of 100] secrets per repository, therefore the sync is split into multiple repos.
 
 The deploy keys can be set by an organization owner via the python script link:configure_deploy_keys.py[configure_deploy_keys.py].
 
