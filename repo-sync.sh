@@ -4,6 +4,9 @@ UPSTREAM=$2
 REPO_DIR=repo
 
 echo "Setup directory..."
+if [ -d "$REPO_DIR" ]; then
+  rm -rf $REPO_DIR
+fi
 mkdir $REPO_DIR
 
 echo "Setup SSH ..."
